@@ -46,7 +46,8 @@ pro AUTO_MAIN_PROCESSOR,PREFIX,PLOT_TRACK=PLOT_TRACK
 tfilepath = '../test_data/'
 ModisRoot = '../test_data/'
 outpath = '../output/'
-
+ FILE_MKDIR,outpath
+ 
 ;Fetch t-file containing hand-logged locations of the ship track
 tfile = tfilepath+'t20021501855.dat'
 
