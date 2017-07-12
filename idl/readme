@@ -1,0 +1,52 @@
+The Automated Scheme for Identifying Ship Tracks code is written in IDL. 
+This portable version contains three directories:
+     1) idl where the code is stored
+     2) test_data an example MODIS file and track file
+     3) output where the NetCDF files containing track pixels are stored
+
+Included in this package contains an example ship track file and MODIS data.
+
+To test the code in IDL use the following command:
+IDL>> AUTO_MAIN_PROCESSOR,'20021501855'
+
+This executes the top-level program to process all of the ship tracks identified in 
+the MODIS image: MOD021KM.A2002150.1855.006.2014231005506.hdf
+
+
+Data Acquisition:
+MODIS data can be obtained from ftp://ladsweb.nascom.nasa.gov/allData/6/
+  From here you can download MOD02 (calibrated radiances), MOD03( geolocation) and MOD06 (cloud).
+
+Track File:
+  This file contains the hand-logged positions of all of the ship tracks
+  found in the MODIS calibrated radiances file. The rules typically involve 
+  using the near-infrared channels (2.1 or 3.7 um) to hunt for ship tracks.
+  A ship track will appear very reflective at these wavelengths and have a 
+  linear shape with a "head" point-source closest to the ship and a "tail"
+  location in which the track is no longer discernable from the background clouds.
+  FORMAT:
+  FILENAME:  tYEARDAYHOUR.dat
+  row1: day hour min and second
+  row2: number of ship tracks in image
+  row3: number of track bends in ship track 1
+  row4: alternating x-position & y-position
+  row5: number of track bends in ship track 2
+  ... and so on
+  *Note, this old formatting style stems from the analysis using FORTRAN at Oregon State University.
+  To read this track file in IDL run: read_osu_shiptrack_file.pro
+
+NetCDF File Output
+  1) track_logged_locations: contains all of the positions for each ship track in the granule: dimensions: {x,y},{turning points},{shiptrack number}
+  2) ship: contains all of the {x,y} pixels designated as "polluted" along with additional information pertaining to the segment number, distance to head, width of track at location, track number in MODIS image, and bitflag for ship track overlapping controls of another track
+  3) con1: pixels that make up control 1 (above the ship track)
+  4) con2: pixels that make up control 2 (below the ship track)
+  5) ship_modis: extracted data from cloud file for the "ship pixels"
+  6) con1_modis: extracted data from cloud file for the "control 1 pixels"
+  7) con2_modis: extracted data from cloud file for the "control 2 pixels"
+     (*note MODIS data contains 35 selected MODIS cloud variables)
+
+For guidance on how to analyze the output data see: AUTO_PLOT_OUTPUT_DATA.PRO
+
+For further questions contact:
+Matthew Christensen
+email: matthew.christensen@stfc.ac.uk
