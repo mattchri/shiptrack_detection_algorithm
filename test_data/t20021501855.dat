@@ -1,0 +1,15 @@
+  150   18   55   0.14844 			day	hr	min	second  starttime of pass
+    5						number of tracks
+    5
+  505   51  492   72  475   98  465  123  448  148	number of segments (pixel number, line number) for track 1
+    4 		 	pixel number line number pixel number line number....
+  243  373  225  390  199  410  177  427
+    6			NOTE:  First pixel number and line number 
+  627  727  661  754  685  772  730  800  781  830  834  853	associated with the head of the track.
+    8			Line numbers are counted from the first line 	
+  496  683  525  711  556  736  578  756  625  791  673  816  723  842  780  874	of the first scene.
+    3
+  226  833  248  865  268  887
+
+,,,,|,,,,1,,,,|,,,,2,,,,|,,,,3,,,,|,,,,4,,,,|,,,,5,,,,|,,,,6,,,,|,,,,7,,,,|,,,,8,,,,|,,,,9,,,,|,,,,0,,,,|,,,,1,,,,|,,,, 
+
